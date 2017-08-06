@@ -101,7 +101,7 @@ namespace WebApplication55
 
                 con.Open();
                 using (SqlCommand cmd = new SqlCommand("SupportIssuesSelect", con, null))
-                {
+                { 
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     try
                     { 
