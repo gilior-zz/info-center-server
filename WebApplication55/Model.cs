@@ -379,5 +379,11 @@ namespace WebApplication55
                 foreach (var n in node.children) nodes.Push(n);
             }
         }
+
+        public static void WaitForStatusSpan(this ServiceController serviceController, ServiceControllerStatus serviceControllerStatus)
+        {
+            serviceController.WaitForStatus(serviceControllerStatus, TimeSpan.FromMinutes(30));
+        }
+
     }
 }

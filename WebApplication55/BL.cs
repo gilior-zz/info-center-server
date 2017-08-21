@@ -27,7 +27,7 @@ namespace WebApplication55
         }
         private void HandleFaQs()
         {
-            int intervaMinutes = 30 * 60 * 1000;
+            int intervaMinutes = 5 * 60 * 1000;
             RunFunc((obj) => this.LoadFaQsIntoCache(null), intervaMinutes);
         }
         private void HandleModules()
@@ -37,17 +37,17 @@ namespace WebApplication55
         }
         private void HandleRoller()
         {
-            int intervaMinutes = 12 * 60 * 60 * 1000;
+            int intervaMinutes =  60 * 60 * 1000;
             RunFunc((obj) => this.LoadRollerIntoCache(null), intervaMinutes);
         }
         private void HandleLinks()
         {
-            int intervaMinutes = 12 * 60 * 60 * 1000;
+            int intervaMinutes =  60 * 60 * 1000;
             RunFunc((obj) => this.LoadLinksIntoCache(null), intervaMinutes);
         }
         private void HandleEnvs()
         {
-            int intervaMinutes = 30 * 60 * 1000;
+            int intervaMinutes = 15 * 60 * 1000;
             RunFunc((obj) => this.LoadEnvsIntoCache(null), intervaMinutes);
         }
         private void RunFunc(Action<object> a, int intervaMinutes)

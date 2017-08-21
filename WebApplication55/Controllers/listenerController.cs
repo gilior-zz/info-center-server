@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.ServiceProcess;
 using System.Web.Http;
 
+
 namespace WebApplication55.Controllers
 {
     public class listenerController : ApiController
@@ -65,12 +66,12 @@ namespace WebApplication55.Controllers
 
                     case ServiceControllerStatus.Running:
                         sc.Start();
-                        sc.WaitForStatus(ServiceControllerStatus.Running);
+                        sc.WaitForStatusSpan(ServiceControllerStatus.Running);
                         break;
 
                     case ServiceControllerStatus.Stopped:
                         sc.Stop();
-                        sc.WaitForStatus(ServiceControllerStatus.Stopped);
+                        sc.WaitForStatusSpan(ServiceControllerStatus.Stopped);
                         break;
                 }
                 return (int)toStatus;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -41,7 +42,13 @@ namespace WebApplication55.Controllers
         // POST: api/faq
         public IHttpActionResult Post([FromBody]SupportIssue value)
         {
-           
+
+            if (value.lnks != null && value.lnks.Any())
+                foreach (var item in value.lnks)
+                {
+                    if (!File.Exists(item.pth))
+                        return NotFound();
+                }
             using (var con = new SqlConnection())
             {
                 con.ConnectionString = @"Data Source=DANEL-DB\S16;Initial Catalog=support_new;Integrated Security=True;";

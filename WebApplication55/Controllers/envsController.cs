@@ -74,48 +74,48 @@ namespace WebApplication55.Controllers
                 case 0:
                     sc = new ServiceController(value.winServiceName, value.serverName);
                     sc.Stop();
-                    sc.WaitForStatus(ServiceControllerStatus.Stopped);
+                    sc.WaitForStatusSpan(ServiceControllerStatus.Stopped);
                     value.winServiceIsUp = false;
                     value.winListenerStatus = (int)ServiceControllerStatus.Stopped;
                     break;
                 case 10:
                     sc = new ServiceController(value.winNotificationName, value.serverName);
                     sc.Stop();
-                    sc.WaitForStatus(ServiceControllerStatus.Stopped);
+                    sc.WaitForStatusSpan(ServiceControllerStatus.Stopped);
                     value.winNotificationIsUp = false;
                     value.winNotificationStatus = (int)ServiceControllerStatus.Stopped;
                     break;
                 case 1:
                     sc = new ServiceController(value.winServiceName, value.serverName);
                     sc.Start();
-                    sc.WaitForStatus(ServiceControllerStatus.Running);
+                    sc.WaitForStatusSpan(ServiceControllerStatus.Running);
                     value.winServiceIsUp = true;
                     value.winListenerStatus = (int)ServiceControllerStatus.Running;
                     break;
                 case 11:
                     sc = new ServiceController(value.winNotificationName, value.serverName);
                     sc.Start();
-                    sc.WaitForStatus(ServiceControllerStatus.Running);
+                    sc.WaitForStatusSpan(ServiceControllerStatus.Running);
                     value.winNotificationIsUp = true;
                     value.winNotificationStatus = (int)ServiceControllerStatus.Running;
                     break;
                 case 2:
                     sc = new ServiceController(value.winServiceName, value.serverName);
                     sc.Stop();
-                    sc.WaitForStatus(ServiceControllerStatus.Stopped);
+                    sc.WaitForStatusSpan(ServiceControllerStatus.Stopped);
                     value.winListenerStatus = (int)ServiceControllerStatus.Stopped;
                     sc.Start();
-                    sc.WaitForStatus(ServiceControllerStatus.Running);
+                    sc.WaitForStatusSpan(ServiceControllerStatus.Running);
                     value.winServiceIsUp = true;
                     value.winListenerStatus = (int)ServiceControllerStatus.Running;
                     break;
                 case 12:
                     sc = new ServiceController(value.winNotificationName, value.serverName);
                     sc.Stop();
-                    sc.WaitForStatus(ServiceControllerStatus.Stopped);
+                    sc.WaitForStatusSpan(ServiceControllerStatus.Stopped);
                     value.winNotificationStatus = (int)ServiceControllerStatus.Stopped;
                     sc.Start();
-                    sc.WaitForStatus(ServiceControllerStatus.Running);
+                    sc.WaitForStatusSpan(ServiceControllerStatus.Running);
                     value.winNotificationIsUp = true;
                     value.winNotificationStatus = (int)ServiceControllerStatus.Running;
                     break;

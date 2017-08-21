@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Web;
 using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
@@ -18,14 +19,28 @@ namespace WebApplication55
 
             var v = filterContext.ControllerContext.Controller.GetType();
             ILog log = log4net.LogManager.GetLogger(v);
-            log.Info("started " + filterContext.ActionDescriptor.ActionName + "IP " + this.GetClientIpAddress(filterContext.Request));
+            StringBuilder actionParam = new StringBuilder();
+            foreach (var item in filterContext.ActionArguments)
+            {
+                actionParam.Append(item.Key).Append("-").Append(item.Value).Append(",");
+            }
+            string str = $@"{filterContext.ActionDescriptor.ActionName} {actionParam.ToString()} {filterContext.Request.Headers.FirstOrDefault(i => i.Key == "userName").Value.FirstOrDefault()}";
+            log.Info("started " + str);
+
+
         }
 
         public override void OnActionExecuted(HttpActionExecutedContext actionExecutedContext)
         {
-            var v = actionExecutedContext.ActionContext.ControllerContext.Controller.GetType();
-            ILog log = log4net.LogManager.GetLogger(v);
-            log.Info("end " + actionExecutedContext.ActionContext.ActionDescriptor.ActionName +"IP " + this.GetClientIpAddress(actionExecutedContext.Request));
+            //var v = actionExecutedContext.ActionContext.ControllerContext.Controller.GetType();
+            //ILog log = log4net.LogManager.GetLogger(v);
+            //StringBuilder actionParam = new StringBuilder();
+            //foreach (var item in actionExecutedContext.ActionContext.ActionArguments)
+            //{
+            //    actionParam.Append(item.Value).Append(",");
+            //}
+            //string str = $@"{actionExecutedContext.ActionContext.ActionDescriptor.ActionName} {actionParam.ToString()}  {actionExecutedContext.ActionContext.Request.Headers.FirstOrDefault(i => i.Key == "userName").Value.FirstOrDefault()}";
+            //log.Info("started " + str);
         }
 
         public string GetClientIpAddress(HttpRequestMessage request)
