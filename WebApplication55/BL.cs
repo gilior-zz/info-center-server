@@ -16,7 +16,7 @@ namespace WebApplication55
 {
     public class BL
     {
-        bool isDevMode = true;
+        bool isDevMode = false;
         public void LoadData()
         {
             this.HandleModules();
@@ -173,7 +173,7 @@ namespace WebApplication55
             using (var con = new SqlConnection())
             {
 
-                con.ConnectionString = @"Data Source=DANEL-TS\DEV2008R2;Initial Catalog=DanelX;Integrated Security=True;Trusted_Connection=True";
+                con.ConnectionString = @"Data Source=DANEL-TfS\DEV2008R2;Initial Catalog=DanelX;Integrated Security=True;Trusted_Connection=True";
 
                 con.Open();
                 using (SqlCommand cmd = new SqlCommand())

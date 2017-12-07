@@ -38,14 +38,8 @@ namespace WebApplication55
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             RegisterWebApiFilters(GlobalConfiguration.Configuration.Filters);
             log4net.Config.XmlConfigurator.Configure();
-
-
-
-
-
             WebCacheManager.Instance.SetValue("files", this.Server.MapPath("~/Files"));
             this.BL.LoadData();
-
         }
 
         public static void RegisterWebApiFilters(System.Web.Http.Filters.HttpFilterCollection filters)

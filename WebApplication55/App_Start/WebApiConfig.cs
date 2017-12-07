@@ -21,8 +21,8 @@ namespace WebApplication55
             // Web API routes
             config.MapHttpAttributeRoutes();
             var cors = new EnableCorsAttribute("*", "*", "*");
-            config.EnableCors(cors);
-            config.EnableCors();
+            //config.EnableCors(cors);
+            //config.EnableCors();
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
